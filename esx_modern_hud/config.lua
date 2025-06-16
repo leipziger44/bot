@@ -10,7 +10,7 @@ Config.HUD = {
 -- Player Info Settings
 Config.PlayerInfo = {
     enabled = true,
-    position = {x = 20, y = 20}, -- top left position
+    position = {x = 'right', y = 20}, -- top right position
     showMoney = true,
     showBank = true,
     showJob = true,
@@ -19,7 +19,7 @@ Config.PlayerInfo = {
     colors = {
         primary = '#8B5CF6', -- purple
         secondary = '#10B981', -- green
-        background = 'rgba(0, 0, 0, 0.6)' -- transparent black
+        background = 'transparent' -- no background color
     }
 }
 
