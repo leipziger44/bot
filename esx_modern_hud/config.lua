@@ -68,13 +68,13 @@ Config.Seatbelt = {
 -- Status Settings (Hunger/Thirst)
 Config.Status = {
     enabled = true,
-    position = {x = 5, y = 75}, -- near minimap
+    position = {x = 'right', y = 'bottom'}, -- bottom right
     showHunger = true,
     showThirst = true,
     colors = {
         hunger = '#F59E0B',
         thirst = '#3B82F6',
-        background = 'rgba(0, 0, 0, 0.6)'
+        background = 'transparent' -- no background color
     }
 }
 
