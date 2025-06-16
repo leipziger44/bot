@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESX Modern HUD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Player Info HUD (Top Left) -->
+    <div id="playerInfo" class="hud-element player-info">
+        <div class="info-header">
+            <div class="player-name" id="playerName">John Doe</div>
+            <div class="player-id" id="playerId">#123</div>
+        </div>
+        <div class="info-content">
+            <div class="info-row">
+                <div class="info-item health">
+                    <div class="info-icon">❤️</div>
+                    <div class="info-bar">
+                        <div class="info-fill" id="healthBar"></div>
+                    </div>
+                    <div class="info-value" id="healthValue">100</div>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-item armor">
+                    <div class="info-icon">🛡️</div>
+                    <div class="info-bar">
+                        <div class="info-fill" id="armorBar"></div>
+                    </div>
+                    <div class="info-value" id="armorValue">0</div>
+                </div>
+            </div>
+            <div class="info-row money-row">
+                <div class="money-item cash">
+                    <div class="money-icon">💵</div>
+                    <div class="money-value" id="moneyValue">$0</div>
+                </div>
+                <div class="money-item bank">
+                    <div class="money-icon">🏦</div>
+                    <div class="money-value" id="bankValue">$0</div>
+                </div>
+            </div>
+            <div class="info-row job-row">
+                <div class="job-info">
+                    <div class="job-title" id="jobTitle">Arbeitslos</div>
+                    <div class="job-grade" id="jobGrade"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Speedometer (Bottom Center) -->
+    <div id="speedometer" class="hud-element speedometer">
+        <div class="speedo-container">
+            <div class="speed-display">
+                <div class="speed-value" id="speedValue">0</div>
+                <div class="speed-unit" id="speedUnit">KMH</div>
+            </div>
+            <div class="speedo-bars">
+                <div class="speedo-bar fuel">
+                    <div class="bar-icon">⛽</div>
+                    <div class="bar-fill" id="fuelBar"></div>
+                    <div class="bar-value" id="fuelValue">100%</div>
+                </div>
+                <div class="speedo-bar engine">
+                    <div class="bar-icon">🔧</div>
+                    <div class="bar-fill" id="engineBar"></div>
+                    <div class="bar-value" id="engineValue">100%</div>
+                </div>
+            </div>
+            <div class="speedo-extras">
+                <div class="gear-display">
+                    <span class="gear-label">GANG:</span>
+                    <span class="gear-value" id="gearValue">P</span>
+                </div>
+                <div class="seatbelt-indicator" id="seatbeltIndicator">
+                    <span class="seatbelt-icon">🔒</span>
+                    <span class="seatbelt-text">SEATBELT</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Bars (Near Minimap) -->
+    <div id="statusBars" class="hud-element status-bars">
+        <div class="status-item hunger">
+            <div class="status-icon">🍔</div>
+            <div class="status-bar">
+                <div class="status-fill" id="hungerBar"></div>
+            </div>
+            <div class="status-value" id="hungerValue">100%</div>
+        </div>
+        <div class="status-item thirst">
+            <div class="status-icon">💧</div>
+            <div class="status-bar">
+                <div class="status-fill" id="thirstBar"></div>
+            </div>
+            <div class="status-value" id="thirstValue">100%</div>
+        </div>
+    </div>
+
+    <!-- Notification Container (Top Right) -->
+    <div id="notifications" class="notification-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
