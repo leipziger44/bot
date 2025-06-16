@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: white;
+    overflow: hidden;
+    background: transparent;
+    user-select: none;
+}
+
+#hud-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.hud-section {
+    position: absolute;
+    pointer-events: none;
+}
+
+/* Status Bars Styling */
+#status-section {
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.status-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    padding: 8px 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 220px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.status-bar:hover {
+    transform: translateX(5px);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.bar-icon {
+    margin-right: 12px;
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+.health-bar .bar-icon {
+    color: #10B981;
+}
+
+.armor-bar .bar-icon {
+    color: #8B5CF6;
+}
+
+.stamina-bar .bar-icon {
+    color: #F59E0B;
+}
+
+.bar-container {
+    flex: 1;
+    position: relative;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.health-fill {
+    background: linear-gradient(90deg, #059669, #10B981);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.armor-fill {
+    background: linear-gradient(90deg, #7C3AED, #8B5CF6);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.stamina-fill {
+    background: linear-gradient(90deg, #D97706, #F59E0B);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.bar-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+}
+
+/* Money Section */
+#money-section {
+    top: 140px;
+    left: 20px;
+}
+
+.money-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.money-item {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    padding: 12px 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 200px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.money-item:hover {
+    transform: translateX(5px);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.money-item i {
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.cash i {
+    color: #10B981;
+}
+
+.bank i {
+    color: #8B5CF6;
+}
+
+.money-item span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Player Info Section */
+#player-info-section {
+    top: 220px;
+    left: 20px;
+}
+
+.player-info-container {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    padding: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 220px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.player-info-container:hover {
+    transform: translateX(5px);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.player-basic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.player-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #10B981;
+}
+
+.player-id {
+    font-size: 14px;
+    color: #8B5CF6;
+    font-weight: 500;
+}
+
+.player-job {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #D1D5DB;
+}
+
+.player-job i {
+    margin-right: 8px;
+    color: #10B981;
+}
+
+/* Vehicle HUD */
+#vehicle-section {
+    bottom: 120px;
+    right: 250px;
+}
+
+.vehicle-hud {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.speedometer-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Speedometer */
+.speedometer {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.speed-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+}
+
+#speed-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #10B981;
+    display: block;
+    line-height: 1;
+}
+
+#speed-unit {
+    font-size: 12px;
+    color: #8B5CF6;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.speed-progress {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.speed-circle {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.speed-track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 3;
+}
+
+.speed-fill {
+    fill: none;
+    stroke: url(#speedGradient);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+/* Vehicle Info */
+.vehicle-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gear-display {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.gear-label {
+    display: block;
+    font-size: 12px;
+    color: #8B5CF6;
+    margin-bottom: 4px;
+}
+
+#gear-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #10B981;
+}
+
+.fuel-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.fuel-icon {
+    color: #10B981;
+    font-size: 16px;
+}
+
+.fuel-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.fuel-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #059669, #10B981);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+#fuel-percentage {
+    font-size: 12px;
+    color: #8B5CF6;
+    font-weight: 600;
+    min-width: 35px;
+}
+
+/* Notifications */
+#notifications-container {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1001;
+}
+
+.notification {
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 12px;
+    padding: 16px 20px;
+    backdrop-filter: blur(10px);
+    border-left: 4px solid #10B981;
+    max-width: 350px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification.hide {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.notification-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #10B981;
+    margin-left: 8px;
+}
+
+.notification-message {
+    font-size: 13px;
+    color: #D1D5DB;
+    line-height: 1.4;
+}
+
+.notification.info {
+    border-left-color: #3B82F6;
+}
+
+.notification.success {
+    border-left-color: #10B981;
+}
+
+.notification.warning {
+    border-left-color: #F59E0B;
+}
+
+.notification.error {
+    border-left-color: #EF4444;
+}
+
+/* Responsive Design */
+@media (max-width: 1366px) {
+    .speedometer-container {
+        padding: 15px;
+    }
+    
+    .speedometer {
+        width: 100px;
+        height: 100px;
+    }
+    
+    #speed-value {
+        font-size: 24px;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hud-section {
+    animation: fadeInLeft 0.6s ease-out;
+}
+
+.vehicle-hud {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Gradient Definitions */
+.speed-circle defs {
+    background: none;
+}
+
+.speed-fill {
+    stroke: #10B981;
+}
+
+/* Hide elements when HUD is toggled off */
+.hud-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}

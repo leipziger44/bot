@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern HUD</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="hud-container">
+        <!-- Status Bars Section -->
+        <div id="status-section" class="hud-section">
+            <!-- Health Bar -->
+            <div class="status-bar health-bar">
+                <div class="bar-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-fill health-fill"></div>
+                    <div class="bar-text">
+                        <span id="health-text">100</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Armor Bar -->
+            <div class="status-bar armor-bar">
+                <div class="bar-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-fill armor-fill"></div>
+                    <div class="bar-text">
+                        <span id="armor-text">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stamina Bar -->
+            <div class="status-bar stamina-bar">
+                <div class="bar-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-fill stamina-fill"></div>
+                    <div class="bar-text">
+                        <span id="stamina-text">100</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Money Section -->
+        <div id="money-section" class="hud-section">
+            <div class="money-container">
+                <div class="money-item cash">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span id="cash-amount">$0</span>
+                </div>
+                <div class="money-item bank">
+                    <i class="fas fa-university"></i>
+                    <span id="bank-amount">$0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player Info Section -->
+        <div id="player-info-section" class="hud-section">
+            <div class="player-info-container">
+                <div class="player-basic">
+                    <span class="player-name" id="player-name">Player</span>
+                    <span class="player-id" id="player-id">#000</span>
+                </div>
+                <div class="player-job">
+                    <i class="fas fa-briefcase"></i>
+                    <span id="job-info">Civilian</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vehicle HUD Section -->
+        <div id="vehicle-section" class="hud-section vehicle-hud" style="display: none;">
+            <div class="speedometer-container">
+                <!-- Speedometer -->
+                <div class="speedometer">
+                    <div class="speed-display">
+                        <span id="speed-value">0</span>
+                        <span id="speed-unit">KM/H</span>
+                    </div>
+                    <div class="speed-progress">
+                        <svg class="speed-circle" viewBox="0 0 100 100">
+                            <circle class="speed-track" cx="50" cy="50" r="45"></circle>
+                            <circle class="speed-fill" cx="50" cy="50" r="45" id="speed-progress-circle"></circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Vehicle Info -->
+                <div class="vehicle-info">
+                    <div class="gear-display">
+                        <span class="gear-label">GEAR</span>
+                        <span id="gear-value">P</span>
+                    </div>
+                    
+                    <!-- Fuel Bar -->
+                    <div class="fuel-container">
+                        <div class="fuel-icon">
+                            <i class="fas fa-gas-pump"></i>
+                        </div>
+                        <div class="fuel-bar">
+                            <div class="fuel-fill" id="fuel-fill"></div>
+                        </div>
+                        <span id="fuel-percentage">100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications Section -->
+        <div id="notifications-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
