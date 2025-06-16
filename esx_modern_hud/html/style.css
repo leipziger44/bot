@@ -444,7 +444,7 @@ body {
 @media (max-width: 1920px) {
     .player-info {
         transform: scale(0.9);
-        transform-origin: top left;
+        transform-origin: top right; /* Changed from top left to top right */
     }
     
     .speedometer {
@@ -454,6 +454,6 @@ body {
     
     .status-bars {
         transform: scale(0.9);
-        transform-origin: bottom left;
+        transform-origin: bottom right; /* Changed from bottom left to bottom right */
     }
 }
