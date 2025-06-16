@@ -90,6 +90,7 @@ function updateStatusBars(data) {
     // Update Health
     const healthFill = document.querySelector('.health-fill');
     const healthText = document.getElementById('health-text');
+    const healthBar = document.querySelector('.health-bar');
     const healthPercent = Math.max(0, Math.min(100, data.health));
     
     healthFill.style.width = healthPercent + '%';
@@ -97,9 +98,9 @@ function updateStatusBars(data) {
     
     // Add pulsing effect for low health
     if (healthPercent < 25) {
-        healthFill.style.animation = 'pulse 1s infinite';
+        healthBar.classList.add('low-warning');
     } else {
-        healthFill.style.animation = 'none';
+        healthBar.classList.remove('low-warning');
     }
     
     // Update Armor
@@ -110,14 +111,6 @@ function updateStatusBars(data) {
     armorFill.style.width = armorPercent + '%';
     armorText.textContent = Math.round(armorPercent);
     
-    // Update Stamina
-    const staminaFill = document.querySelector('.stamina-fill');
-    const staminaText = document.getElementById('stamina-text');
-    const staminaPercent = Math.max(0, Math.min(100, data.stamina));
-    
-    staminaFill.style.width = staminaPercent + '%';
-    staminaText.textContent = Math.round(staminaPercent);
-    
     // Show/hide armor bar based on armor value
     const armorBar = document.querySelector('.armor-bar');
     if (armorPercent > 0) {
@@ -125,6 +118,38 @@ function updateStatusBars(data) {
         armorBar.style.opacity = '1';
     } else {
         armorBar.style.opacity = '0.5';
+    }
+    
+    // Update Hunger
+    const hungerFill = document.querySelector('.hunger-fill');
+    const hungerText = document.getElementById('hunger-text');
+    const hungerBar = document.querySelector('.hunger-bar');
+    const hungerPercent = Math.max(0, Math.min(100, data.hunger || 100));
+    
+    hungerFill.style.width = hungerPercent + '%';
+    hungerText.textContent = Math.round(hungerPercent);
+    
+    // Warning for low hunger
+    if (hungerPercent < 25) {
+        hungerBar.classList.add('low-warning');
+    } else {
+        hungerBar.classList.remove('low-warning');
+    }
+    
+    // Update Thirst
+    const thirstFill = document.querySelector('.thirst-fill');
+    const thirstText = document.getElementById('thirst-text');
+    const thirstBar = document.querySelector('.thirst-bar');
+    const thirstPercent = Math.max(0, Math.min(100, data.thirst || 100));
+    
+    thirstFill.style.width = thirstPercent + '%';
+    thirstText.textContent = Math.round(thirstPercent);
+    
+    // Warning for low thirst
+    if (thirstPercent < 25) {
+        thirstBar.classList.add('low-warning');
+    } else {
+        thirstBar.classList.remove('low-warning');
     }
 }
 
