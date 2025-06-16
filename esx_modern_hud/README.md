@@ -31,9 +31,10 @@ Ein modernes, funktionsreiches HUD-System für FiveM ESX-Roleplay-Server.
 - **Schaden-System** bei Nichtanschnallen
 - **Visuelle und Audio-Indikatoren**
 
-### 🍔 Status-Anzeigen
-- **Hunger-Balken** neben der Minikarte
+### 🍔 Status-Anzeigen (Unten Rechts)
+- **Hunger-Balken** unten rechts positioniert  
 - **Durst-Balken** mit Farbverlauf
+- **Transparenter Hintergrund** 
 - **ESX Status Integration**
 
 ## 📦 Installation
