@@ -291,12 +291,13 @@ body {
 
 /* Status Bars Styles */
 .status-bars {
-    bottom: 80px;
-    left: 20px;
+    bottom: 20px; /* Changed from 80px to 20px for bottom position */
+    right: 20px; /* Changed from left to right */
     width: 200px;
-    background: rgba(0, 0, 0, 0.6);
+    background: transparent; /* No background color */
     padding: 12px;
-    border-left: 4px solid #10B981;
+    border-right: 4px solid #10B981; /* Changed from border-left to border-right */
+    backdrop-filter: blur(8px); /* Keep blur effect */
 }
 
 .status-item {
