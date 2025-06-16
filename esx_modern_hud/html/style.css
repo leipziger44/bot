@@ -23,11 +23,12 @@ body {
 /* Player Info Styles */
 .player-info {
     top: 20px;
-    left: 20px;
+    right: 20px; /* Changed from left to right */
     width: 280px;
-    background: rgba(0, 0, 0, 0.6);
+    background: transparent; /* No background color */
     padding: 16px;
-    border-left: 4px solid #8B5CF6;
+    border-right: 4px solid #8B5CF6; /* Changed from border-left to border-right */
+    backdrop-filter: blur(8px); /* Keep blur effect */
 }
 
 .info-header {
