@@ -149,10 +149,11 @@ body {
     left: 50%;
     transform: translateX(-50%);
     width: 320px;
-    background: rgba(0, 0, 0, 0.6);
+    background: transparent; /* No background color */
     padding: 16px;
     border-bottom: 4px solid #8B5CF6;
     display: none;
+    backdrop-filter: blur(8px); /* Keep blur effect */
 }
 
 .speedometer.show {
