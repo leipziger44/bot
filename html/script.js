@@ -275,7 +275,17 @@ function showNotification(data) {
     const notification = document.createElement('div');
     const id = ++notificationId;
     
-    notification.className = `notification ${data.notificationType || 'info'}`;
+    // Determine special notification classes
+    let specialClass = '';
+    if (data.title && data.title.includes('Server-Restart')) {
+        specialClass = 'restart';
+    } else if (data.title && data.title.includes('txAdmin')) {
+        specialClass = 'txadmin';
+    } else if (data.title && (data.title.includes('Ankündigung') || data.title.includes('📢'))) {
+        specialClass = 'txadmin';
+    }
+    
+    notification.className = `notification ${data.notificationType || 'info'} ${specialClass}`;
     notification.id = `notification-${id}`;
     
     // Create notification icon based on type
@@ -290,6 +300,23 @@ function showNotification(data) {
         case 'error':
             icon = 'fa-times-circle';
             break;
+    }
+    
+    // Special icons for special notifications
+    if (data.title && data.title.includes('🔄')) {
+        icon = 'fa-sync-alt';
+    } else if (data.title && data.title.includes('📢')) {
+        icon = 'fa-bullhorn';
+    } else if (data.title && data.title.includes('⚠️')) {
+        icon = 'fa-exclamation-triangle';
+    } else if (data.title && data.title.includes('💌')) {
+        icon = 'fa-envelope';
+    } else if (data.title && data.title.includes('🖥️')) {
+        icon = 'fa-server';
+    } else if (data.title && data.title.includes('✅')) {
+        icon = 'fa-check-circle';
+    } else if (data.title && data.title.includes('🔧')) {
+        icon = 'fa-wrench';
     }
     
     notification.innerHTML = `
@@ -307,8 +334,14 @@ function showNotification(data) {
         notification.classList.add('show');
     }, 10);
     
-    // Auto remove
-    const duration = data.duration || 5000;
+    // Auto remove with longer duration for important notifications
+    let duration = data.duration || 5000;
+    if (specialClass === 'restart') {
+        duration = Math.max(duration, 8000); // Minimum 8 seconds for restart warnings
+    } else if (specialClass === 'txadmin') {
+        duration = Math.max(duration, 6000); // Minimum 6 seconds for txAdmin notifications
+    }
+    
     setTimeout(() => {
         removeNotification(id);
     }, duration);
@@ -317,12 +350,27 @@ function showNotification(data) {
     notifications.push({
         id: id,
         element: notification,
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        type: specialClass || data.notificationType || 'info'
     });
     
-    // Limit visible notifications
+    // Limit visible notifications (keep important ones longer)
     if (notifications.length > 5) {
-        removeNotification(notifications[0].id);
+        // Remove oldest non-critical notification first
+        const oldestNonCritical = notifications.find(n => 
+            n.type !== 'restart' && n.type !== 'error' && n.type !== 'txadmin'
+        );
+        if (oldestNonCritical) {
+            removeNotification(oldestNonCritical.id);
+        } else {
+            removeNotification(notifications[0].id);
+        }
+    }
+    
+    // Play sound effect for important notifications (if sounds are enabled)
+    if (specialClass === 'restart' || data.notificationType === 'error') {
+        // Could add sound effects here
+        // playNotificationSound('warning');
     }
 }
 
