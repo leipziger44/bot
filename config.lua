@@ -5,6 +5,8 @@ Config.HUD = {
     -- Display toggles
     showHealth = true,
     showArmor = true,
+    showHunger = true,
+    showThirst = true,
     showMoney = true,
     showPlayerInfo = true,
     showJob = true,
@@ -15,6 +17,7 @@ Config.HUD = {
     -- Update intervals (ms)
     statusUpdateInterval = 500,
     vehicleUpdateInterval = 100,
+    basicNeedsUpdateInterval = 1000,
     
     -- Colors (Green & Purple theme)
     colors = {
@@ -23,16 +26,18 @@ Config.HUD = {
         accent = '#059669',       -- Dark Green
         background = 'rgba(0, 0, 0, 0.8)',
         text = '#FFFFFF',
-        textSecondary = '#D1D5DB'
+        textSecondary = '#D1D5DB',
+        hunger = '#F59E0B',       -- Orange for hunger
+        thirst = '#3B82F6'        -- Blue for thirst
     },
     
-    -- Positions
+    -- New Positions (updated)
     positions = {
-        statusBars = { x = 20, y = 20 },
-        money = { x = 20, y = 120 },
-        playerInfo = { x = 20, y = 180 },
-        speedometer = { x = -250, y = -120 },
-        notifications = { x = 350, y = 50 }
+        statusBars = { x = 20, y = -200 },    -- Bottom left near minimap
+        money = { x = 20, y = -80 },          -- Bottom left above status
+        playerInfo = { x = -350, y = 20 },    -- Top right
+        speedometer = { x = -250, y = -120 }, -- Bottom right
+        notifications = { x = -400, y = 80 }  -- Top right below player info
     }
 }
 
@@ -56,4 +61,38 @@ Config.Notifications = {
     duration = 5000,  -- 5 seconds
     maxVisible = 5,
     fadeTime = 500
+}
+
+-- Basic Needs (esx_basicneeds)
+Config.BasicNeeds = {
+    enabled = true,
+    showHunger = true,
+    showThirst = true,
+    lowHungerWarning = 20,   -- Show warning below 20%
+    lowThirstWarning = 20,   -- Show warning below 20%
+    statusNames = {
+        hunger = 'hunger',
+        thirst = 'thirst'
+    }
+}
+
+-- txAdmin Integration
+Config.TxAdmin = {
+    enabled = true,
+    showAnnouncements = true,
+    showWarnings = true,
+    showKicks = true,
+    showBans = true
+}
+
+-- Server Restart Warnings
+Config.RestartWarnings = {
+    enabled = true,
+    times = { 30, 15, 10, 5, 3, 2, 1 }, -- Minutes before restart
+    restartTimes = {                      -- Restart schedule (24h format)
+        { hour = 6, minute = 0 },         -- 06:00
+        { hour = 12, minute = 0 },        -- 12:00
+        { hour = 18, minute = 0 },        -- 18:00
+        { hour = 0, minute = 0 }          -- 00:00
+    }
 }

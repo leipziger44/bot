@@ -9,7 +9,21 @@
 </head>
 <body>
     <div id="hud-container">
-        <!-- Status Bars Section -->
+        <!-- Player Info Section - TOP RIGHT -->
+        <div id="player-info-section" class="hud-section">
+            <div class="player-info-container">
+                <div class="player-basic">
+                    <span class="player-name" id="player-name">Player</span>
+                    <span class="player-id" id="player-id">#000</span>
+                </div>
+                <div class="player-job">
+                    <i class="fas fa-briefcase"></i>
+                    <span id="job-info">Civilian</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Bars Section - BOTTOM LEFT NEAR MINIMAP -->
         <div id="status-section" class="hud-section">
             <!-- Health Bar -->
             <div class="status-bar health-bar">
@@ -37,21 +51,34 @@
                 </div>
             </div>
             
-            <!-- Stamina Bar -->
-            <div class="status-bar stamina-bar">
+            <!-- Hunger Bar -->
+            <div class="status-bar hunger-bar">
                 <div class="bar-icon">
-                    <i class="fas fa-running"></i>
+                    <i class="fas fa-utensils"></i>
                 </div>
                 <div class="bar-container">
-                    <div class="bar-fill stamina-fill"></div>
+                    <div class="bar-fill hunger-fill"></div>
                     <div class="bar-text">
-                        <span id="stamina-text">100</span>
+                        <span id="hunger-text">100</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Thirst Bar -->
+            <div class="status-bar thirst-bar">
+                <div class="bar-icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-fill thirst-fill"></div>
+                    <div class="bar-text">
+                        <span id="thirst-text">100</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Money Section -->
+        <!-- Money Section - BOTTOM LEFT ABOVE STATUS -->
         <div id="money-section" class="hud-section">
             <div class="money-container">
                 <div class="money-item cash">
@@ -61,20 +88,6 @@
                 <div class="money-item bank">
                     <i class="fas fa-university"></i>
                     <span id="bank-amount">$0</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Player Info Section -->
-        <div id="player-info-section" class="hud-section">
-            <div class="player-info-container">
-                <div class="player-basic">
-                    <span class="player-name" id="player-name">Player</span>
-                    <span class="player-id" id="player-id">#000</span>
-                </div>
-                <div class="player-job">
-                    <i class="fas fa-briefcase"></i>
-                    <span id="job-info">Civilian</span>
                 </div>
             </div>
         </div>
@@ -117,7 +130,7 @@
             </div>
         </div>
 
-        <!-- Notifications Section -->
+        <!-- Notifications Section - TOP RIGHT BELOW PLAYER INFO -->
         <div id="notifications-container"></div>
     </div>
 
