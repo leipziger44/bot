@@ -33,7 +33,7 @@ Config.Speedometer = {
     colors = {
         primary = '#8B5CF6',
         secondary = '#10B981',
-        background = 'rgba(0, 0, 0, 0.6)'
+        background = 'transparent' -- no background color
     }
 }
 
