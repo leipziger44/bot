@@ -4,8 +4,8 @@ Ein modernes, funktionsreiches HUD-System für FiveM ESX-Roleplay-Server.
 
 ## 🎯 Features
 
-### 🎮 Spieler-Informationen (Oben Links)
-- **Transparenter Hintergrund** mit lila/grünen Akzenten
+### 🎮 Spieler-Informationen (Oben Rechts)
+- **Transparenter Hintergrund** mit lila/grünen Akzenten (keine Farbfüllung)
 - **Spielername und Server-ID**
 - **Gesundheit und Rüstung** mit animierten Balken
 - **Bargeld und Bankguthaben** 
@@ -17,6 +17,7 @@ Ein modernes, funktionsreiches HUD-System für FiveM ESX-Roleplay-Server.
 - **Motor-Gesundheit** Anzeige
 - **Gang-Anzeige** (P, R, N, 1-6)
 - **Anschnallgurt-Indikator**
+- **Transparenter Hintergrund**
 
 ### 🔔 Benachrichtigungssystem
 - **TX-Benachrichtigungen** für Ankündigungen
